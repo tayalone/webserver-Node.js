@@ -2,6 +2,9 @@ const express = require('express')
 
 const app = express()
 
+// ใช้ middleware ทำให้ express แสดงstatic page ได้
+app.use(express.static(__dirname + '/public'))
+
 app.get('/', (req, res) => {
     // res.send('<h1>Hello Express!</h1>')
     res.send({
@@ -20,4 +23,6 @@ app.get('/bad', (req, res) => {
     })
 })
 
-app.listen(3000)
+app.listen(3000, () => {
+    console.log('server running at 3000')
+})
