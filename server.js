@@ -4,6 +4,9 @@ const fs = require('fs')
 
 const app = express()
 
+//set port สำหรับ deploy
+const port = process.env.PORT || 3000
+
 //enble ให้แบ่่งส่วน template ได้
 hbs.registerPartials(__dirname+'/views/partials')
 
@@ -59,6 +62,6 @@ app.get('/bad', (req, res) => {
     })
 })
 
-app.listen(3000, () => {
-    console.log('server running at 3000')
+app.listen(port, () => {
+    console.log(`server running at ${port}`)
 })
