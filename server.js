@@ -3,9 +3,20 @@ const hbs = require('hbs')
 
 const app = express()
 
+//enble ให้แบ่่งส่วน template ได้
+hbs.registerPartials(__dirname+'/views/partials')
+
 app.set('view engine', 'hbs')
 // ใช้ middleware ทำให้ express แสดงstatic page ได้
 app.use(express.static(__dirname + '/public'))
+
+hbs.registerHelper('getCurrentYear', () => {
+    return new Date().getFullYear()
+})
+
+hbs.registerHelper('screamIt', (text) => {
+    return text.toUpperCase()
+})
 
 app.get('/', (req, res) => {
     // res.send('<h1>Hello Express!</h1>')
